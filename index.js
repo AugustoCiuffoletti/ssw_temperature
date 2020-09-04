@@ -5,12 +5,12 @@ import "./style.css";
 const appDiv = document.getElementById("app");
 appDiv.innerHTML = `<h1>Temperature</h1>`;
 
-function display() {
+window.display = function() {
   var request = new XMLHttpRequest();
   var city = event.srcElement.id;
   request.open(
     "GET",
-    "http://api.openweathermap.org/data/2.5/weather?APPID=d0fda39104b3c7c45fe031a5392964c1&units=metric&q=" +
+    "https://api.openweathermap.org/data/2.5/weather?APPID=d0fda39104b3c7c45fe031a5392964c1&units=metric&q=" +
       event.srcElement.id,
     false
   );
