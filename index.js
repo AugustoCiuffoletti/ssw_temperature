@@ -2,8 +2,8 @@
 import "./style.css";
 
 // Funzione collegata ai bottoni
-// "window" solitamente necessario in StackBlitz, 
-// altrimenti può essere omesso
+// "window" necessario in StackBlitz, può essere 
+// omesso altrimenti
 window.display = function(city) {
   var request = new XMLHttpRequest(); // Costruzione dell'oggetto "request"
 
