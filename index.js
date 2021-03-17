@@ -1,10 +1,15 @@
 // Import stylesheets
-import "./style.css";
+import "./style.css"; 
+
+var cityElems = document.getElementsByClassName("città");
+for (let elem of cityElems ) {
+  elem.onclick = () => display(elem.innerHTML);
+}
 
 // Funzione collegata ai bottoni
-// "window" necessario in StackBlitz, può essere 
+// "window" necessario in StackBlitz, può essere
 // omesso altrimenti
-window.display = function(city) {
+function display(city) {
   var request = new XMLHttpRequest(); // Costruzione dell'oggetto "request"
 
   // Funzione callback invocata quando la request termina
@@ -12,7 +17,7 @@ window.display = function(city) {
     // funzione definita arrow
     if (request.status === 200) {
       var dataObject = JSON.parse(request.response);
-      document.getElementById("risposta").innerText =
+      document.getElementById("risposta").innerHTML =
         "A " + city + " ci sono " + dataObject.main.temp + " gradi";
     } else {
       document.getElementById("risposta").innerText = "Errore";
