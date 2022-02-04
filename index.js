@@ -1,14 +1,13 @@
 // Import stylesheets
-import "./style.css"; 
+import "./style.css";
 
 var cityElems = Array.from(document.getElementsByClassName("città"));
+var apiKey = "d0475be3a1967b1b49dfc02c8128001a";
 for (let elem of cityElems ) {
   elem.onclick = () => display(elem.innerHTML);
 }
 
 // Funzione collegata ai bottoni
-// "window" necessario in StackBlitz, può essere
-// omesso altrimenti
 function display(city) {
   var request = new XMLHttpRequest(); // Costruzione dell'oggetto "request"
 
@@ -27,7 +26,9 @@ function display(city) {
   // Applico il metodo "open"
   request.open(
     "GET",
-    "https://api.openweathermap.org/data/2.5/weather?APPID=9bd419b49d4261031516ad5fddac3439&units=metric&q=" +
+    "https://api.openweathermap.org/data/2.5/weather?APPID=" + 
+      apiKey + 
+      "&units=metric&q=" +
       city,
     true
   );
