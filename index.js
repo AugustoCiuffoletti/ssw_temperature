@@ -10,7 +10,6 @@ const URL =
 for (let elem of cityElems ) {
   elem.onclick = () => display(elem.innerHTML);
 }
-
 // Funzione collegata ai bottoni
 function display(city) {
   var request = new XMLHttpRequest(); // Costruzione dell'oggetto "request"
