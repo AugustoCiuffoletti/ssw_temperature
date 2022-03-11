@@ -45,15 +45,10 @@ function display(c) {
 //
 function calcoloMedia() {
   media = 0;
-  leCittà.map((città) => {
-    let request = new XMLHttpRequest();
-    request.onload = () => {
-      if (request.status === 200) {
-        media = media + JSON.parse(request.response).main.temp / leCittà.length;
-        document.getElementById('media').innerHTML = media;
-      }
-    };
-    request.open('GET', URL + città, true);
-    request.send();
-  });
+  leCittà.map( c => {
+    doCity(c, (d) => {
+      media = media + d.main.temp / leCittà.length;
+      document.getElementById('media').innerHTML = media;
+    });
+  })
 }
