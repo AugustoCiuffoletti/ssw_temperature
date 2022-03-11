@@ -47,7 +47,7 @@ function calcoloMedia() {
   media = 0;
   leCittà.map( c => {
     doCity(c, (d) => {
-      media = media + d.main.temp / leCittà.length;
+      media += d.main.temp / leCittà.length;
       document.getElementById('media').innerHTML = media;
     });
   })
