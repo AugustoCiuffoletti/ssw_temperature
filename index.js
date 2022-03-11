@@ -32,18 +32,23 @@ function display(c) {
     if (request.status === 200) {
       let dataObject = JSON.parse(request.response);
       document.getElementById('risposta').innerHTML =
-        new Date().toISOString() + ': A ' + c + ' ci sono ' + dataObject.main.temp + ' gradi: ';
+        new Date().toISOString() +
+        ': A ' +
+        c +
+        ' ci sono ' +
+        dataObject.main.temp +
+        ' gradi: ';
     } else {
       document.getElementById('risposta').innerText = 'Errore';
     }
   };
   // Applico il metodo "open"
   request.open('GET', URL + c, true);
-  // Applico il metodo send (al termine chiamerà il callback "onload")
+  // Applico il metodo send (al termine chiamera' il callback "onload")
   request.send();
   console.log(new Date().toISOString() + ': Finito:');
 }
-// 
+//
 function calcoloMedia() {
   media = 0;
   leCittà.map((città) => {
@@ -52,7 +57,7 @@ function calcoloMedia() {
     request.onload = () => {
       if (request.status === 200) {
         media += JSON.parse(request.response).main.temp / leCittà.length;
-        document.getElementById("media").innerHTML = media;
+        document.getElementById('media').innerHTML = media;
       }
     };
     request.open('GET', URL + città, true);
