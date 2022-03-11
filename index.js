@@ -32,12 +32,7 @@ function display(c) {
     if (request.status === 200) {
       let dataObject = JSON.parse(request.response);
       document.getElementById('risposta').innerHTML =
-        new Date().toISOString() +
-        ': A ' +
-        c +
-        ' ci sono ' +
-        dataObject.main.temp +
-        ' gradi: ';
+        new Date().toISOString() + ': A ' + c + ' ci sono ' + dataObject.main.temp + ' gradi: ';
     } else {
       document.getElementById('risposta').innerText = 'Errore';
     }
