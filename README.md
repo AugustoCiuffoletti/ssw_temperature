@@ -1,5 +1,7 @@
 # Servizio meteorologico con un callback
 
-Per evitare la ripetizione del codice relativo all'interrogazione del database delle temperature realizziamo una funzione che realizza la connessione e prende come parametro una funzione callback che viene applicata ai valori ottenuti dal database remoto. 
+Invece di usare lo strumento AXAX, un po' datato e poco flessibile, realizziamo la stessa funzionalità usando "fetch" per accedere al database esterno, e le "promise" per gestire le request asincrone.
+
+Cambia unicamente il metodo "doCity" il resto è praticamente intatto.
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/js-sswtemp)

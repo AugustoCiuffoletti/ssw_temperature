@@ -23,32 +23,29 @@ leCittà.map((città) => {
 document
   .getElementById('calcolaMedia')
   .addEventListener('click', () => calcoloMedia());
-function doCity(city, callback) {
-  var request = new XMLHttpRequest();
-  request.onload = function () {
-    if (request.status === 200) {
-      callback(JSON.parse(request.response));
-    } else {
-      throw 'Errore';
-    }
-  };
-  request.open('GET', URL + city, true);
-  request.send();
+function doCity(c, callback) {
+  let promise = fetch(URL + c)
+    .then(
+      (response) => response.json(),
+      (error) => alert(error)
+    )
+    .then((data) => callback(data));
+  return promise;
 }
 // Funzione collegata ai bottoni
 function display(c) {
-  doCity(c, d => 
-  document.getElementById('risposta').innerHTML =
-  new Date().toISOString() +': A ' + c + ' ci sono ' + d.main.temp + ' gradi: '
-  )
+  doCity(c, (d) => {
+    document.getElementById('risposta').innerHTML =
+      'A ' + c + ' ci sono ' + d.main.temp + ' gradi';
+  });
 }
 //
 function calcoloMedia() {
   media = 0;
-  leCittà.map( c => {
+  leCittà.map((c) => {
     doCity(c, (d) => {
       media = media + d.main.temp / leCittà.length;
       document.getElementById('media').innerHTML = media;
     });
-  })
+  });
 }
