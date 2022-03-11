@@ -38,12 +38,10 @@ async function display(c) {
       'A ' + c + ' ci sono ' + d.main.temp + ' gradi';
   });
 }
-function calcoloMedia() {
-  media = 0;
-  leCitta.map((c) => {
-    doCity(c, (d) => {
-      media += d.main.temp / leCitta.length;
-      document.getElementById('media').innerHTML = media;
-    });
-  });
+async function calcoloMedia() {
+  let media = 0;
+  for (let c of leCitta) {
+    media += await doCity(c, d => d.main.temp / leCitta.length);
+  }
+  document.getElementById('media').innerHTML = media
 }
