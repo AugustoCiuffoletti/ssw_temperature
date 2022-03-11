@@ -10,7 +10,7 @@ const URL =
   'https://api.openweathermap.org/data/2.5/weather?APPID=' +
   apiKey +
   '&units=metric&q=';
-// Crea una lista di bottoni con i nomi delle città
+// Crea una lista di bottoni con i nomi delle citta'
 leCitta.map((citta) => {
   const btn = document.createElement('button');
   btn.innerHTML = citta;
@@ -38,8 +38,8 @@ function display(c) {
 }
 async function calcoloMedia() {
   let temperature = await Promise.all(
-    leCitta.map(c => doCity(c, d => d.main.temp))
+    leCitta.map((c) => doCity(c, (d) => d.main.temp))
   );
-  let media = temperature.reduce((m, t) => m + t/leCitta.length,0);
-  document.getElementById("media").innerText = media;
+  let media = temperature.reduce((m, t) => m + t / leCitta.length, 0);
+  document.getElementById('media').innerText = media;
 }
