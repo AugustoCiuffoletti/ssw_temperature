@@ -56,7 +56,7 @@ function calcoloMedia() {
     let request = new XMLHttpRequest();
     request.onload = () => {
       if (request.status === 200) {
-        media = media + JSON.parse(request.response).main.temp / leCittà.length;
+        media += JSON.parse(request.response).main.temp / leCittà.length;
         document.getElementById("media").innerHTML = media;
       }
     };
