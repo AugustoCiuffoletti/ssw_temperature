@@ -22,7 +22,7 @@ leCitta.map((citta) => {
 document
   .getElementById('calcolaMedia')
   .addEventListener('click', () => calcoloMedia());
-function doCity(c, callback) {
+async function doCity(c, callback) {
   return fetch(URL + c)
     .then(
       (response) => response.json(),
