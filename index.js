@@ -40,7 +40,7 @@ function display(c) {
   };
   // Applico il metodo "open"
   request.open('GET', URL + c, true);
-  // Applico il metodo send (al termine chiamerà il callback "onload")
+  // Applico il metodo send (al termine chiamera' il callback "onload")
   request.send();
   console.log(new Date().toISOString() + ': Finito:');
 }
