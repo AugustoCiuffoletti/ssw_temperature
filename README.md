@@ -4,6 +4,6 @@ Invece di usare lo strumento AXAX, un po' datato e poco flessibile, realizziamo 
 
 Cambia unicamente il metodo "doCity" il resto è praticamente intatto.
 
-Il pèrogramma è lungo 51 righe (-3)
+Il programma è lungo 51 righe (-3).
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/js-sswtemp)
