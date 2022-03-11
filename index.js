@@ -10,6 +10,7 @@ const URL =
   'https://api.openweathermap.org/data/2.5/weather?APPID=' +
   apiKey +
   '&units=metric&q=';
+let media = 0;
 // Crea una lista di bottoni con i nomi delle città
 leCittà.map((città) => {
   const btn = document.createElement('button');
@@ -19,6 +20,9 @@ leCittà.map((città) => {
   item.appendChild(btn);
   document.getElementById('città').appendChild(item);
 });
+document
+  .getElementById('calcolaMedia')
+  .addEventListener('click', () => calcoloMedia());
 // Funzione collegata ai bottoni
 function display(c) {
   const request = new XMLHttpRequest(); // Costruzione dell'oggetto "request"
@@ -26,7 +30,7 @@ function display(c) {
   request.onload = () => {
     // funzione definita arrow
     if (request.status === 200) {
-      var dataObject = JSON.parse(request.response);
+      let dataObject = JSON.parse(request.response);
       document.getElementById('risposta').innerHTML =
         new Date().toISOString() +
         ': A ' +
@@ -44,24 +48,19 @@ function display(c) {
   request.send();
   console.log(new Date().toISOString() + ': Finito:');
 }
+// 
 function calcoloMedia() {
-var media = 0;
-for (let c of cityElems) {
-let city = c.innerHTML;
-let request = new XMLHttpRequest();
-// Costruzione dell’oggetto "request"
-request.onload = () => {
-if (request.status === 200) {
-var dataObject = JSON.parse(request.response);
-media += dataObject.main.temp / cityElems.length;
-document.getElementById("media").innerHTML =
-"La media e’ di " + media + " gradi";
-} else {
-document.getElementById("media").innerText = "Errore";
+  media = 0;
+  leCittà.map((città) => {
+    console.log(città);
+    let request = new XMLHttpRequest();
+    request.onload = () => {
+      if (request.status === 200) {
+        media = media + JSON.parse(request.response).main.temp / leCittà.length;
+        document.getElementById("media").innerHTML = media;
+      }
+    };
+    request.open('GET', URL + città, true);
+    request.send();
+  });
 }
-};
-request.open("GET", URL + city, true);
-request.send();
-}
-}
-
