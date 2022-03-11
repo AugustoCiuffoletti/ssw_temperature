@@ -32,14 +32,12 @@ function doCity(c, callback) {
     .then((data) => callback(data));
   return promise;
 }
-// Funzione collegata ai bottoni
 function display(c) {
   doCity(c, (d) => {
     document.getElementById('risposta').innerHTML =
       'A ' + c + ' ci sono ' + d.main.temp + ' gradi';
   });
 }
-//
 function calcoloMedia() {
   media = 0;
   leCitta.map((c) => {
