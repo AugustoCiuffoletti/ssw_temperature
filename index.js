@@ -37,9 +37,9 @@ function display(c) {
   });
 }
 async function calcoloMedia() {
-  let media = 0;
-  for (let c of leCitta) {
-    media += await doCity(c, (d) => d.main.temp / leCitta.length);
-  }
-  document.getElementById('media').innerHTML = media;
+  let temperature = await Promise.all(
+    leCitta.map(c => doCity(c, d => d.main.temp))
+  );
+  let media = temperature.reduce((m, t) => m + t/leCitta.length,0);
+  document.getElementById("media").innerText = media;
 }
