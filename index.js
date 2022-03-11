@@ -11,13 +11,13 @@ const URL =
   apiKey +
   '&units=metric&q=';
 // Crea una lista di bottoni con i nomi delle città
-leCittà.map((città) => {
+leCitta.map((citta) => {
   const btn = document.createElement('button');
-  btn.innerHTML = città;
+  btn.innerHTML = citta;
   btn.addEventListener('click', () => display(btn.innerHTML));
   const item = document.createElement('li');
   item.appendChild(btn);
-  document.getElementById('città').appendChild(item);
+  document.getElementById('citta').appendChild(item);
 });
 // Funzione collegata ai bottoni
 function display(c) {
