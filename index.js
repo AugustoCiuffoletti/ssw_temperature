@@ -10,7 +10,8 @@ const URL =
   'https://api.openweathermap.org/data/2.5/weather?APPID=' +
   apiKey +
   '&units=metric&q=';
-// Crea una lista di bottoni con i nomi delle citta
+let media = 0;
+// Crea una lista di bottoni con i nomi delle città
 leCitta.map((citta) => {
   const btn = document.createElement('button');
   btn.innerHTML = citta;
@@ -19,28 +20,30 @@ leCitta.map((citta) => {
   item.appendChild(btn);
   document.getElementById('citta').appendChild(item);
 });
-// Funzione collegata ai bottoni
-function display(c) {
-  const request = new XMLHttpRequest(); // Costruzione dell'oggetto "request"
-  // Funzione callback invocata quando la request termina
-  request.onload = () => {
-    // funzione definita arrow
-    if (request.status === 200) {
-      var dataObject = JSON.parse(request.response);
-      document.getElementById('risposta').innerHTML =
-        new Date().toISOString() +
-        ': A ' +
-        c +
-        ' ci sono ' +
-        dataObject.main.temp +
-        ' gradi: ';
-    } else {
-      document.getElementById('risposta').innerText = 'Errore';
-    }
-  };
-  // Applico il metodo "open"
-  request.open('GET', URL + c, true);
-  // Applico il metodo send (al termine chiamera' il callback "onload")
-  request.send();
-  console.log(new Date().toISOString() + ': Finito:');
+document
+  .getElementById('calcolaMedia')
+  .addEventListener('click', () => calcoloMedia());
+function doCity(c, callback) {
+  let promise = fetch(URL + c)
+    .then(
+      (response) => response.json(),
+      (error) => alert(error)
+    )
+    .then((data) => callback(data));
+  return promise;
+}
+async function display(c) {
+  await doCity(c, (d) => {
+    document.getElementById('risposta').innerHTML =
+      'A ' + c + ' ci sono ' + d.main.temp + ' gradi';
+  });
+}
+function calcoloMedia() {
+  media = 0;
+  leCitta.map((c) => {
+    doCity(c, (d) => {
+      media += d.main.temp / leCitta.length;
+      document.getElementById('media').innerHTML = media;
+    });
+  });
 }
