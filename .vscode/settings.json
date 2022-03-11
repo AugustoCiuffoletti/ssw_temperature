@@ -420,7 +420,7 @@
   /**
    * The line height
    */
-  // "editor.lineHeight": 18,
+  "editor.lineHeight": 22,
   /**
    * The letter spacing
    */
