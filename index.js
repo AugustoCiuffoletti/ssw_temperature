@@ -23,13 +23,12 @@ document
   .getElementById('calcolaMedia')
   .addEventListener('click', () => calcoloMedia());
 function doCity(c, callback) {
-  let promise = fetch(URL + c)
+  return fetch(URL + c)
     .then(
       (response) => response.json(),
       (error) => alert(error)
     )
     .then((data) => callback(data));
-  return promise;
 }
 function display(c) {
   doCity(c, (d) => {
@@ -40,7 +39,7 @@ function display(c) {
 async function calcoloMedia() {
   let media = 0;
   for (let c of leCitta) {
-    media += await doCity(c, d => d.main.temp / leCitta.length);
+    media += await doCity(c, (d) => d.main.temp / leCitta.length);
   }
-  document.getElementById('media').innerHTML = media
+  document.getElementById('media').innerHTML = media;
 }
