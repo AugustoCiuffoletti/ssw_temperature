@@ -44,3 +44,24 @@ function display(c) {
   request.send();
   console.log(new Date().toISOString() + ': Finito:');
 }
+function calcoloMedia() {
+var media = 0;
+for (let c of cityElems) {
+let city = c.innerHTML;
+let request = new XMLHttpRequest();
+// Costruzione dell’oggetto "request"
+request.onload = () => {
+if (request.status === 200) {
+var dataObject = JSON.parse(request.response);
+media += dataObject.main.temp / cityElems.length;
+document.getElementById("media").innerHTML =
+"La media e’ di " + media + " gradi";
+} else {
+document.getElementById("media").innerText = "Errore";
+}
+};
+request.open("GET", URL + city, true);
+request.send();
+}
+}
+
