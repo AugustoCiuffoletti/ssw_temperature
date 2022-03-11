@@ -40,6 +40,6 @@ async function calcoloMedia() {
   let temperature = await Promise.all(
     leCitta.map((c) => doCity(c, (d) => d.main.temp))
   );
-  let media = temperature.reduce((m, t) => m + t / leCitta.length, 0);
-  document.getElementById('media').innerText = media;
+  document.getElementById('media').innerText = 
+    temperature.reduce((m, t) => m + t / leCitta.length, 0);
 }
