@@ -2,6 +2,8 @@
 import './style.css';
 
 const cityElems = Array.from(document.getElementsByClassName('città'));
+// Usate questa per qualche prova, poi create un vostro account
+// su www.openweathermap.org e create una API key personale
 const apiKey = 'd0475be3a1967b1b49dfc02c8128001a';
 const leCittà = ['Genova', 'Milano', 'Torino', 'Roma'];
 const URL =
@@ -9,7 +11,7 @@ const URL =
   apiKey +
   '&units=metric&q=';
 // Crea una lista di bottoni con i nomi delle città
-leCittà.map( città => {
+leCittà.map((città) => {
   const btn = document.createElement('button');
   btn.innerHTML = città;
   btn.addEventListener('click', () => display(btn.innerHTML));
@@ -26,7 +28,12 @@ function display(c) {
     if (request.status === 200) {
       var dataObject = JSON.parse(request.response);
       document.getElementById('risposta').innerHTML =
-      (new Date()).toISOString() + ': A ' + c + ' ci sono ' + dataObject.main.temp + ' gradi: ';
+        new Date().toISOString() +
+        ': A ' +
+        c +
+        ' ci sono ' +
+        dataObject.main.temp +
+        ' gradi: ';
     } else {
       document.getElementById('risposta').innerText = 'Errore';
     }
@@ -35,6 +42,5 @@ function display(c) {
   request.open('GET', URL + c, true);
   // Applico il metodo send (al termine chiamerà il callback "onload")
   request.send();
-  console.log((new Date()).toISOString() + ": Finito:");
+  console.log(new Date().toISOString() + ': Finito:');
 }
-
