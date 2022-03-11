@@ -39,7 +39,7 @@ function doCity(city, callback) {
 function display(c) {
   doCity(c, d => 
   document.getElementById('risposta').innerHTML =
-  new Date().toISOString() +': A ' + c + ' ci sono ' + d.main.temp + ' gradi: '
+    new Date().toISOString() +': A ' + c + ' ci sono ' + d.main.temp + ' gradi: '
   )
 }
 //
