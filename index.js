@@ -10,7 +10,7 @@ const URL =
   'https://api.openweathermap.org/data/2.5/weather?APPID=' +
   apiKey +
   '&units=metric&q=';
-let media = 0;
+//let media = 0;
 // Crea una lista di bottoni con i nomi delle citta
 leCitta.map((citta) => {
   const btn = document.createElement('button');
@@ -50,7 +50,7 @@ function display(c) {
 }
 //
 function calcoloMedia() {
-  media = 0;
+  let media = 0;
   leCitta.map((citta) => {
     console.log(citta);
     let request = new XMLHttpRequest();
