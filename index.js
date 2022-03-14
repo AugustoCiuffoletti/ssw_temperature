@@ -38,8 +38,8 @@ function doCity(city, callback) {
 // Funzione collegata ai bottoni
 function display(c) {
   doCity(c, d => 
-  document.getElementById('risposta').innerHTML =
-    new Date().toISOString() +': A ' + c + ' ci sono ' + d.main.temp + ' gradi: '
+    document.getElementById('risposta').innerHTML =
+      new Date().toISOString() +': A ' + c + ' ci sono ' + d.main.temp + ' gradi: '
   )
 }
 //
