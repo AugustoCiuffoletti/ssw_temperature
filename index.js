@@ -33,7 +33,7 @@ function display(c) {
         c +
         ' ci sono ' +
         dataObject.main.temp +
-        ' gradi: ';
+        ' gradi';
     } else {
       document.getElementById('risposta').innerText = 'Errore';
     }
