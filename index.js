@@ -41,5 +41,5 @@ function display(c) {
   request.open('GET', URL + c, true);
   // Applico il metodo send (al termine chiamera' il callback "onload")
   request.send();
-  console.log(new Date().toISOString() + ': Finito:');
+  console.log(new Date().toISOString() + ': Finito');
 }
