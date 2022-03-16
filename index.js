@@ -1,7 +1,6 @@
 // Import stylesheets
 import './style.css';
 
-const cityElems = Array.from(document.getElementsByClassName('citta'));
 // Usate questa per qualche prova, poi create un vostro account
 // su www.openweathermap.org e create una API key personale
 const apiKey = 'd0475be3a1967b1b49dfc02c8128001a';
