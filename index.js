@@ -24,7 +24,7 @@ document
   .getElementById('calcolaMedia')
   .addEventListener('click', () => calcoloMedia());
 function doCity(city, callback) {
-  var request = new XMLHttpRequest();
+  const request = new XMLHttpRequest();
   request.onload = function () {
     if (request.status === 200) {
       callback(JSON.parse(request.response));
@@ -46,7 +46,7 @@ function display(c) {
 function calcoloMedia() {
   media = 0;
   leCitta.map( c => {
-    doCity(c, (d) => {
+    doCity(c, d => {
       media += d.main.temp / leCitta.length;
       document.getElementById('media').innerHTML = media;
     });
