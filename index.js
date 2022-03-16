@@ -30,7 +30,6 @@ function doCity(c, callback) {
       (error) => alert(error)
     )
     .then((data) => callback(data));
-  return promise;
 }
 function display(c) {
   doCity(c, (d) => {
